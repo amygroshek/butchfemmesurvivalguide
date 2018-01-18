@@ -148,10 +148,15 @@ function my_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
     }
 
     if ( $user && is_object( $user ) ) {
-        // echo print_r($user);
         $selected_binary = the_author_meta('selectbinary', $user->ID );
-        if ( $user->data->ID == '1' ) {
-            $avatar = 'YOUR_NEW_IMAGE_URL';
+        if ( $selected_binary == 'butch' ) {
+            // $avatar = 'YOUR_NEW_IMAGE_URL';
+            $avatar = sprintf( '%s/images/butch_avatar.jpg', get_stylesheet_directory_uri() );
+            $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+        }
+        if ( $selected_binary == 'femme' ) {
+            // $avatar = 'YOUR_NEW_IMAGE_URL';
+            $avatar = sprintf( '%s/images/femme_avatar.jpg', get_stylesheet_directory_uri() );
             $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
         }
     }
